@@ -1,10 +1,3 @@
-class Morpion : 
-    arbre = []
-    plateau = plateau()
-    arbre.append(plateau)
-    racine = arbre[0]
-    pass
-
 def plateau():
     return [[[],[],[]], 
             [[],[],[]],
@@ -13,3 +6,8 @@ def plateau():
 def jouer():
     pass
 
+class Morpion : 
+    arbre = []
+    plateau = plateau()
+    arbre.append(plateau)
+    racine = arbre[0]
