@@ -4,3 +4,5 @@ class MorpionView(QWidget):
         super().__init__()
         self.setWindowTitle("Morpion")
         self.resize(400, 300)
+        self.setStyleSheet("background-color: lightgray;")
+#permet de créer la fenêtre avec un tritre et une taille
