@@ -10,4 +10,6 @@ def plateau():
             [[],[],[]],
             []]
 
+def jouer():
+    pass
 
