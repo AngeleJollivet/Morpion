@@ -1,8 +1,8 @@
 # Kanban
 
 ## A faire
-Créer l’algorithme Min-Max
-Créer le système de points après chaque victoire
+- Créer l’algorithme Min-Max
+- Créer le système de points après chaque victoire
 
 ## En cours
 - Décider de la manière d'implémenter l'algorithme probabiliste
