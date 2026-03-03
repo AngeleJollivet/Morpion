@@ -30,8 +30,16 @@ def jouer(plateau, choix, pion):
     for i in range(3):
         for j in range(3):
             if plateau[i][j] == choix:
-                plateau[i][j] = pion
-    return plateau
+                if type(plateau[i][j]) == int:
+                    plateau[i][j] = pion
+                    return plateau
+                else:
+                    print("Case déjà prise !")
+                    coup = int(input("Merci de choisir une case libre : "))
+                    return jouer(plateau, coup, pion)
+    print("Case invalide !")
+    coup = int(input("Merci de choisir une case valide : "))
+    return jouer(plateau, coup, pion)
 
 def plateau_plein(plateau): #ouais le nom ets un peu bancal ehahahah
     for ligne in plateau:
@@ -55,7 +63,8 @@ def morpion():
     p = plateau()
     j1, j2 = choisir_pions()
     if j1 is None: #là s'ils rentrent une mauvaise lettre c'est ici qu'on check et qu'on arrete tout
-        return
+        print("Merci de relancer")
+        return None
     afficher_plateau(p)
     
     while not plateau_plein(p):
