@@ -90,5 +90,3 @@ def morpion():
         if plateau_plein(p):
             print("Match nul !")
             return
-
-morpion()
