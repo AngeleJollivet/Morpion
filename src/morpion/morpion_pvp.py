@@ -23,7 +23,6 @@ def choisir_pions():
     else:
         j1 = "O"
         j2 = "X"
-        
     return j1, j2
 
 def jouer(plateau, choix, pion):
