@@ -1,19 +1,32 @@
-#Bon c'est du PVP donc pas du tout ce qu'on est censés faire mais c'est une bonne base je pense !
-
 def plateau():
+    """Créer un plateau à cases numérotées
+
+    Returns:
+        plateau (list) : le plateau de jeu, matrice 3x3
+    """
     return [
         [1, 2, 3],
         [4, 5, 6],
         [7, 8, 9]]
 
 def afficher_plateau(plateau):
+    """Afficher le plateau
+    
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+    """
     for ligne in plateau :
         print(ligne)
 
 def choisir_pions():
+    """Attribuer un pion (X ou O) à chaque joueur 
+
+    Returns:
+        str : les pions des deux joueurs dans un tuple
+    """
     j1 = input('Joueur 1 : Voulez vous jouer les X ou les O ? ') 
     
-    if j1 not in ("X", "x", "O", "o"):  # utiliser .isupper ?? jsp c'est pas hyper clean là
+    if j1 not in ("X", "x", "O", "o"):  
         print("Réponse invalide, veuillez relancer le jeu !")
         return None, None
     
@@ -26,6 +39,13 @@ def choisir_pions():
     return j1, j2
 
 def jouer(plateau, choix, pion):
+    """Placer un pion sur une case libre du plateau selon le joueur dont c'est le tour
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+        choix (int) : la case choisie par le joueur
+        pion (str) : le pion du joueur dont c'est le tour
+    Returns:
+        list : le plateau mis à jour"""
     for i in range(3):
         for j in range(3):
             if plateau[i][j] == choix:
@@ -40,7 +60,12 @@ def jouer(plateau, choix, pion):
     coup = int(input("Merci de choisir une case valide : "))
     return jouer(plateau, coup, pion)
 
-def plateau_plein(plateau): #ouais le nom ets un peu bancal ehahahah
+def plateau_plein(plateau): 
+    """Permet de vérifier si le plateau est rempli ou non
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+    Returns:
+        bool : True s'il est plein, False s'il reste au moins une case de vide"""
     for ligne in plateau:
         for i in ligne:
             if type(i) == int:
@@ -48,6 +73,11 @@ def plateau_plein(plateau): #ouais le nom ets un peu bancal ehahahah
     return True
 
 def victoire(plateau) :
+    """Parcours le plateau pour vérifier si 3 pions sont alignés et si l'un des joueurs à gagné
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+    Returns:
+        list : True si un joueur a gagné, False par défaut sinon"""
     for i in range(3):
         if plateau[i][0] == plateau[i][1] and plateau[i][0] == plateau[i][2]:
             return True
@@ -59,6 +89,7 @@ def victoire(plateau) :
             return True
 
 def morpion():
+    """Jouer au morpion contre un autre utilisateur dans le même terminal"""
     p = plateau()
     j1, j2 = choisir_pions()
     if j1 is None: #là s'ils rentrent une mauvaise lettre c'est ici qu'on check et qu'on arrete tout

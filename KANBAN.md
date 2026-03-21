@@ -1,18 +1,23 @@
 # Kanban
 
 ## A faire
-- Créer l’algorithme Min-Max
-- Créer le système de points après chaque victoire
+- Interface graphique
 
 ## En cours
-- Décider de la manière d'implémenter l'algorithme probabiliste
-- Recherches : Comment créer un algorithme probabiliste
-- Interface graphique
-- Algorithme qui évalue le score de la partie en cours
+
 
 ## Fait
-- Structure de base
-- Morpion basique (pvp)
-- Morpion aléatoire
+- Structure du dossier
+- Créer un morpion basique (pvp) comme structure de base
+- Morpion aléatoire (l'ordinateur fait ses propres choix mais sans réflexion)
 - Recherches :  Algorithme “Min-Max”
+- Décider de la manière d'implémenter l'algorithme 
+- Créer algorithme qui évalue le score de la partie en cours
+- Créer le système de points après chaque victoire
+- Terminer l’algorithme Min-Max
+- Faire le mode de jeu contre l'IA
+- Documentation des fonctions
+- Remplir le README
+
+
 

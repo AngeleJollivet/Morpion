@@ -1,16 +1,12 @@
+from morpion_pvp import plateau, afficher_plateau, jouer, plateau_plein,victoire
 import random
 
-def plateau():
-    return [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]]
-
-def afficher_plateau(plateau):
-    for ligne in plateau :
-        print(ligne)
-
 def choisir_pions():
+    """Attribuer un pion (X ou O) au joueur, et l'autre à l'algorithme
+
+    Returns:
+        str : les pions du joueur et de l'algorithme
+    """
     j = input('Joueur : Voulez vous jouer les X ou les O ? ') 
     
     if j not in ("X", "x", "O", "o"):  # utiliser .isupper ?? jsp c'est pas hyper clean là
@@ -25,22 +21,13 @@ def choisir_pions():
         ia = "X"
     return j, ia
 
-def jouer(plateau, choix, pion): # Ca pourrait être cool de faire une version avec un while plutot ?
-    for i in range(3):
-        for j in range(3):
-            if plateau[i][j] == choix:
-                if type(plateau[i][j]) == int:
-                    plateau[i][j] = pion
-                    return plateau
-                else:
-                    print("Case déjà prise !")
-                    coup = int(input("Merci de choisir une case libre : "))
-                    return jouer(plateau, coup, pion)
-    print("Case invalide !")
-    coup = int(input("Merci de choisir une case valide : "))
-    return jouer(plateau, coup, pion)
-
 def jouer_IA(plateau, pion):
+    """Placer un pion sur une case libre du plateau selon un chiffre aléatoire entre 1 et 9
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+        pion (str) : le pion du joueur dont c'est le tour
+    Returns:
+        list : le plateau mis à jour"""
     choix = random.randint(1,9)
     for i in range(3):
         for j in range(3):
@@ -52,26 +39,8 @@ def jouer_IA(plateau, pion):
                     return jouer_IA(plateau, pion) # ca risque de faire BEAUCOUP d'appels recursifs qu'on voit pas ..
     return jouer_IA(plateau, pion) 
 
-
-def plateau_plein(plateau): #ouais le nom ets un peu bancal ehahahah
-    for ligne in plateau:
-        for i in ligne:
-            if type(i) == int:
-                return False
-    return True
-
-def victoire(plateau) :
-    for i in range(3):
-        if plateau[i][0] == plateau[i][1] and plateau[i][0] == plateau[i][2]:
-            return True
-        if plateau[0][i] == plateau[1][i] and plateau[0][i] == plateau[2][i] :
-            return True
-        if plateau [0][0] == plateau[1][1] and plateau[0][0] == plateau[2][2]:
-            return True
-        if plateau [0][2] == plateau[1][1] and plateau[0][2] == plateau[2][0]:
-            return True
-
 def morpion_random():
+    """Jouer au morpion contre un algorithme aléatoire dans le terminal"""
     p = plateau()
     j, ia = choisir_pions()
     if j is None: #là s'ils rentrent une mauvaise lettre c'est ici qu'on check et qu'on arrete tout
@@ -102,5 +71,3 @@ def morpion_random():
         if plateau_plein(p):
             print("Match nul !")
             return
-
-morpion_random() 

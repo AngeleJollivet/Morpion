@@ -1,6 +1,14 @@
 from morpion_pvp import victoire, plateau_plein
 
 def minmax(plateau, profondeur, IA, pion_ia, pion_j):
+    """Algorithme récursif qui permet à l'IA de voir (calculer) en profondeur et d'analyser les différents coups possibles
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+        profondeur (int) : la profondeur du coup dans l'arbre des possibilités
+        pion_ia (str) : le pion de l'IA
+        pion _j(str) : le pion du joueur 
+    Returns:
+        int : les scores associés aux différents chemins"""
     if victoire(plateau):
         """ Si c'est a l'ia de jouer ça veut dire que le joueur a gagné au tour précédent"""
         if IA:
@@ -38,7 +46,13 @@ def minmax(plateau, profondeur, IA, pion_ia, pion_j):
         return score_min
 
 def meilleur_coup(plateau, pion_ia, pion_j):
-    """ Fonction qui sert a choisir la meilleure case possible """
+    """Fonction qui permet à l'IA de pouvoir choisir la meilleure case possible via la fonction minmax
+    Args:
+        plateau (list) : le plateau de jeu, matrice 3x3
+        pion_ia (str) : le pion de l'IA
+        pion_j(str) : le pion du joueur 
+    Returns:
+        int : le numéro de la case qui correspond au meilleur cours selon le plateau actuel"""
     score_max = -10000
     coup = None
     for i in range(3):

@@ -2,8 +2,9 @@ from morpion_pvp import plateau, afficher_plateau, victoire, plateau_plein, joue
 from minmax import meilleur_coup
 
 def partie_contre_ia():
+    """Jouer au morpion contre un algorithme minmax dans le terminal"""
     p = plateau()
-    pion_joueur = "X"
+    pion_joueur = "X" # contrairement aux autres modes de jeu, le joueur ne choisit ici pas son pion, piste d'amélioration ?
     pion_ia = "O"
     
     print("--- BIENVENUE CONTRE L'IA ---")
@@ -17,6 +18,8 @@ def partie_contre_ia():
         except:
             print("Entrée invalide, réessaie.")
             continue
+        #Dans les autres modes de jeux, nous passons plutot par des if/else pour vérifier la validité de l'entrée saisie par l'utilisateur, ce qui laisse place à beaucoup d'autres erreurs que nous n'aurions pas prévues.
+        # Les "try/Except" ne sont techniquement pas de notre niveau puisque nous ne les avons pas etudiés en cours, mais c'est le moyen le plus correct et efficace d'analyser les entrées, nous avons donc décidé de l'implémenter 
 
         afficher_plateau(p)
         
@@ -42,6 +45,3 @@ def partie_contre_ia():
         if plateau_plein(p):
             print("Match nul !")
             break
-
-if __name__ == "__main__":
-    partie_contre_ia()

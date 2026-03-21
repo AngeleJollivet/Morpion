@@ -1,9 +1,20 @@
-import sys
-# Classe principale pour l'application PyQt5
-from PyQt5.QtWidgets import QApplication
-# Import de la fenêtre principale de l'application
-from View.morpion_view import MorpionView
-app = QApplication(sys.argv) # Crée l'application
-window = MorpionView() # Crée la fenêtre
-window.show() # Affiche la fenêtre
-sys.exit(app.exec_()) # Lance la boucle de l'application et quitte proprement
+from morpion_pvia import partie_contre_ia
+from morpion_pvp import morpion
+from morpion_random import morpion_random
+
+# Choissisez un mode de jeu : 
+
+# Morpion contre une IA minmax :
+
+partie_contre_ia()
+
+
+# Morpion contre un autre joueur : 
+
+#morpion()
+
+
+# Morpion contre un algorithme aléatoire : 
+
+#morpion_random()
+
